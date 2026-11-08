@@ -1,0 +1,29 @@
+{
+  "name": "Przybornik — codzienne narzędzia",
+  "short_name": "Przybornik",
+  "description": "Siedem prywatnych narzędzi, także offline.",
+  "lang": "pl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "theme_color": "#176348",
+  "background_color": "#f6f7f2",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
