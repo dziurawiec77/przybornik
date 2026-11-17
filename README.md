@@ -2,7 +2,11 @@
 
 Siedem bezpłatnych narzędzi w przeglądarce, po polsku. Bez logowania, reklam, analityki i serwera przetwarzającego dane. Zdjęcia oraz hasła pozostają na urządzeniu. Responsywny interfejs ma jasny i ciemny motyw.
 
-**[Otwórz Przybornik](https://przybornik-gpt.rozni-bliscy.workers.dev/)**
+**Strona projektu (GitHub Pages): [https://dziurawiec77.github.io/przybornik/](https://dziurawiec77.github.io/przybornik/)**
+
+[Otwórz Przybornik](https://dziurawiec77.github.io/przybornik/) · [Kod źródłowy](https://github.com/dziurawiec77/przybornik)
+
+*Poprzedni adres w Cloudflare Workers może być nieaktualny; głównym adresem jest obecnie GitHub Pages.*
 
 ## Funkcje
 
