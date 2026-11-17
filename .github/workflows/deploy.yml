@@ -1,7 +1,8 @@
 name: Publikacja GitHub Pages
-# Publikacja jest celowo ręczna do czasu samodzielnego włączenia przez właściciela.
-# Aby wdrażać automatycznie, dodaj do on: push: { branches: [main] }.
+# Publikacja automatyczna po zmianach na main oraz na żądanie.
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
