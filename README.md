@@ -54,27 +54,15 @@ Po zbudowaniu aplikacji polecenie `node scripts/cloudflare-static.mjs ../przybor
 - `tests/` — automatyczne testy i syntetyczne zdjęcia testowe.
 - `.github/workflows/deploy.yml` — oficjalny mechanizm GitHub Pages.
 
-## GitHub Pages — publikacja dopiero na Twoje polecenie
+## GitHub Pages — automatyczna publikacja
 
-Workflow ma obecnie **wyłącznie `workflow_dispatch`**. Samo wgranie kodu do `main` nie publikuje strony.
+Workflow `.github/workflows/deploy.yml` publikuje aplikację po zmianach w gałęzi `main` oraz może zostać uruchomiony ręcznie przez `workflow_dispatch`.
 
-1. W repozytorium wybierz **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-2. W **Actions** wybierz „Publikacja GitHub Pages” → **Run workflow**.
-3. Workflow uruchomi `npm ci`, testy i build, prześle `dist` przez `actions/upload-pages-artifact@v3`, następnie opublikuje przez `actions/deploy-pages@v4`.
-4. Rzeczywisty adres pokaże udane zadanie `deploy`. Docelowa ścieżka to `/przybornik/` na domenie GitHub Pages Twojego konta. Nie jest to potwierdzony adres istniejącego wdrożenia.
+**Przed pierwszą publikacją:** właściciel repozytorium musi skonfigurować **Settings → Pages → Build and deployment → Source: GitHub Actions**. Repozytorium jest obecnie prywatne. Na koncie GitHub Free publikacja Pages wymaga repozytorium publicznego (Settings → General → Danger Zone → Change repository visibility), zaś GitHub Pro wspiera Pages z prywatnego repozytorium. Strona GitHub Pages będzie publicznie dostępna, również przy prywatnym kodzie repozytorium. Nie zmieniaj widoczności bez świadomej decyzji.
 
-Aby **później włączyć automatyczną publikację zmian w `main`**, zmień początek workflow na:
+Po skonfigurowaniu Pages wybierz **Actions → Publikacja GitHub Pages → Run workflow**. Każda późniejsza zmiana w `main` automatycznie ponowi publikację. Workflow wykonuje `npm ci`, `npm test`, `npm run build`, przesyła `dist` do GitHub Pages i wdraża stronę. Potwierdzony adres będzie widoczny po udanym zadaniu `deploy` i zwykle ma format `https://dziurawiec77.github.io/przybornik/`.
 
-```yaml
-on:
-  workflow_dispatch:
-  push:
-    branches: [main]
-```
-
-Uprawnienia: `contents: read`, `pages: write`, `id-token: write`; środowisko `github-pages`. Darmowe publiczne repozytorium korzysta ze standardowych limitów GitHub Free. Nie ma płatnych API ani usług.
-
-Adresy zasobów, manifestu i Service Workera są względne. Ten sam build działa w katalogu głównym witryny i pod ścieżką repozytorium zakończoną `/`. Routing hash pozwala odświeżać narzędzia bez reguł przekierowań.
+Repozytorium zawiera prawidłowe względne ścieżki zasobów, manifestu i Service Workera; routing hash pozwala odświeżać narzędzia bez reguł przekierowań.
 
 ## Aktualizacje
 
