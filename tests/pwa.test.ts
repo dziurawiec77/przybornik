@@ -16,5 +16,5 @@ test('Manifest, ikony i zasoby działają w katalogu głównym i pod /przybornik
   for (const icon of manifest.icons) assert.ok(existsSync('public/' + icon.src));
   assert.ok(manifest.icons.some((icon: {purpose: string}) => icon.purpose === 'maskable'));
 });
-test('Workflow nie publikuje samoczynnie',()=>{const y=readFileSync('.github/workflows/deploy.yml','utf8');assert.match(y,/workflow_dispatch:/);assert.doesNotMatch(y,/^  push:/m);assert.match(y,/actions\/deploy-pages@v4/);});
+test('Workflow publikuje automatycznie z main i pozwala na ręczne wdrożenie',()=>{const y=readFileSync('.github/workflows/deploy.yml','utf8');assert.match(y,/workflow_dispatch:/);assert.match(y,/^  push:\s*\n\s+branches:\s*\[main\]/m);assert.match(y,/actions\/deploy-pages@v4/);});
 test('Hasła nie są zapisywane w pamięci',()=>{const app=readFileSync('src/main.ts','utf8');const code=app.slice(app.indexOf('function passwordTool()'),app.indexOf('const popular:'));assert.doesNotMatch(code,/localStorage|save\(|console\.|fetch\(/);});
